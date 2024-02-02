@@ -59,7 +59,7 @@ get_route <- function(database_id, dataset_id, api_key) {
 
   # error handling
   if (length(route) != 1) {
-    stop("database_code or dataset_code not valid")
+    stop("The database_id and/or the dataset_id is not valid.")
   }
 
   return(route)
