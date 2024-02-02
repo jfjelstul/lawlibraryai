@@ -1,6 +1,6 @@
 # lawlibraryai
 
-An R interface to the LawLibrary.AI API. This package provides easy-to-use tools for downloading legal data from LawLibrary.AI LLC via the LawLibrary.AI API.
+An R interface to the LawLibrary.AI API. This package provides easy-to-use tools for downloading legal data from LawLibrary.AI LLC via the LawLibrary.AI API. Please note that this package requires an API key to use. 
 
 ## Installation
 
