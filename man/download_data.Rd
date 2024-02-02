@@ -4,7 +4,7 @@
 \alias{download_data}
 \title{Download LawLibrary.AI data}
 \usage{
-download_data(database_id, dataset_id, api_key, filters = NULL)
+download_data(database_id, dataset_id, api_key, parameters = NULL)
 }
 \arguments{
 \item{database_id}{A string. The ID of a database. Run \code{get_databases()}
@@ -15,19 +15,19 @@ Run \code{get_databases()} to get a list of valid values.}
 
 \item{api_key}{A string. Your LawLibrary.AI API key.}
 
-\item{filters}{A named list. The default is \code{NULL}. Each element in the
-list specifies a filter to apply to the dataset. Only some variables in
-each dataset can be used to filter. See the documentation for the API for
-more information. If you want to filter by a variable that isn't supported
-by the API, use \code{dplyr::filter()} after downloading the data. Each
-element should be the name of a variable in the specified dataset and the
-corresponding value should be a value or vector of values that the variable
-can take. The response will only include observations where the variable
-equals one of the provided values. If you specify multiple filters, the
-results will only include observations that match all of the filters. For
-some variables, you can add \code{_min} or \code{_max} to the end of the
-variable name to specify a minimum or maximum value. The API will ignore
-invalid filters.}
+\item{parameters}{A named list. The default is \code{NULL}. Each element in
+the list specifies a parameter to apply to the dataset. Only some variables
+in each dataset can be used to filter. See the documentation for the API
+for more information. If you want to filter by a variable that isn't
+supported by the API, use \code{dplyr::filter()} after downloading the
+data. Each element should be the name of a variable in the specified
+dataset and the corresponding value should be a value or vector of values
+that the variable can take. The response will only include observations
+where the variable equals one of the provided values. If you specify
+multiple parameters, the results will only include observations that match
+all of the parameters. For some variables, you can add \code{_min} or
+\code{_max} to the end of the variable name to specify a minimum or maximum
+value. The API will ignore invalid parameters.}
 }
 \value{
 This function returns a tibble containing the requested data.
@@ -41,7 +41,7 @@ This function allows you to download data from LawLibrary.AI
 \details{
 The LawLibrary.AI API has a rate limit. This function automatically
   manages compliance with the rate limit by downloading data from the API in
-  batches. It downloads 25,000 observations every 5 seconds. It prints a
+  batches. It downloads 10,000 observations every 5 seconds. It prints a
   message to the console that indicates how many observations you have
   requested and approximately how long it will take to download the data. It
   also prints a message after every batch that indicates the current
@@ -53,7 +53,7 @@ The LawLibrary.AI API has a rate limit. This function automatically
 data <- download_data(
   database_id = "state_aid",
   dataset_id = "cases",
-  filters = list(
+  parameters = list(
     min_date = "2010-01-01",
     max_date = "2019-12-31",
     member_state = c("France", "Germany")
