@@ -4,7 +4,7 @@
 make_batch_request <- function(url, api_key) {
 
   # set limit
-  limit <- 25000
+  limit <- 10000
 
   # set frequency of batch requests
   frequency <- 5
